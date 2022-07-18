@@ -179,8 +179,15 @@ function flipCard() {
     firstButton.innerHTML = this.getAttribute("data-answer-1")
     secondButton.innerHTML = this.getAttribute("data-answer-2")
     this.append(textDisplay, firstButton, secondButton)
+
+    // disables the option to click multiple cards at once
+    const allCards = Array.from(document.querySelectorAll('.card'))
+    allCards.forEach(card => card.removeEventListener('click', flipCard))
 }
 
+function getResult() {
+    
+}
 
 
 

@@ -190,8 +190,8 @@ function flipCard() {
 }
 
 function getResult() {
-    const allCards = Array.from(document.querySelectorAll('card'))
-    allCards.forEach(card => addEventListener('click', flipCard))
+    const allCards = Array.from(document.querySelectorAll('.card'))
+    allCards.forEach((card) => card.addEventListener('click', flipCard))
 
     const cardOfButton = this.parentElement
 
@@ -217,7 +217,7 @@ function getResult() {
         }, 100)
     }
     // allows to select the next card
-    cardOfButton.removeEventListener("click", flipCard)
+    cardOfButton.removeEventListener('click', flipCard)
 }
 
 

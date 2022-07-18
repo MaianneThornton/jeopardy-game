@@ -200,7 +200,8 @@ function getResult() {
         score = score + parseInt(cardOfButton.getAttribute('data-value'))
         scoreDisplay.innerHTML = score
         cardOfButton.classList.add('correct-answer')
-        // removes children last to first
+
+        // removes children (all info on card) last to first
         setTimeout(() => {
             while (cardOfButton.firstChild) {
                 cardOfButton.removeChild(cardOfButton.lastChild)

@@ -41,7 +41,7 @@ const jeopardyCategories = [
                 level: 'medium',
             },
             {
-                question: 'Where is Mount Kilamanjaro',
+                question: 'Where is Mount Kilimanjaro',
                 answers: ['Zimbabwe', 'Tanzania'],
                 correct: 'Tanzania',
                 level: 'hard',
@@ -82,8 +82,8 @@ const jeopardyCategories = [
             },
             {
                 question: 'What do Koalas eat?',
-                answers: ['Straw', 'Eucalypt'],
-                correct: 'Eucalypt',
+                answers: ['Straw', 'Eucalyptus'],
+                correct: 'Eucalyptus',
                 level: 'medium',
             },
             {

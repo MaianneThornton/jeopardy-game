@@ -119,20 +119,67 @@ const jeopardyCategories = [
     },
 ]
 
-// Adds the title column
 function addCategory(category) {
+    // Adds the title column
     const column = document.createElement('div')
     column.classList.add('genre-column')
 
     const genreTitle = document.createElement('div')
     genreTitle.classList.add('genre-title')
-    genreTitle.innerText = category.genre
+    genreTitle.innerHTML = category.genre
 
     column.appendChild(genreTitle)
     game.append(column)
+
+    // Adds the question cards
+    category.questions.forEach(question => {
+        const card = document.createElement('div')
+        card.classList.add('card')
+        column.append(card)
+
+        // displays points on cards
+        if (question.level === 'easy') {
+            card.innerHTML = 100
+        }
+        if (question.level === 'medium') {
+            card.innerHTML = 200
+        }
+        if (question.level === 'hard') {
+            card.innerHTML = 300
+        }
+
+        // gets all card information
+        card.setAttribute('data-question', question.question)
+        card.setAttribute('data-answer-1', question.answers[0])
+        card.setAttribute('data-answer-2', question.answers[1])
+        card.setAttribute('data-correct', question.correct)
+        card.setAttribute('data-value', card.getInnerHTML())
+
+        card.addEventListener('click', flipCard)
+    })
 }
 
+// Loops through the jeopardyCategories array & addCategories function
 jeopardyCategories.forEach(category => addCategory(category))
+
+function flipCard() {
+    this.innerHTML = ''
+    this.style.fontSize = '15px'
+    this.style.lineHeight = '30px'
+    // creates the backside of the card
+    const textDisplay = document.createElement('div')
+    textDisplay.classList.add('card-text')
+    textDisplay.innerHTML = this.getAttribute('data-question')
+    const firstButton = document.createElement('button')
+    const secondButton = document.createElement('button')
+
+    // creates the answer buttons
+    firstButton.classList.add('first-button')
+    secondButton.classList.add('second-button')
+    firstButton.innerHTML = this.getAttribute("data-answer-1")
+    secondButton.innerHTML = this.getAttribute("data-answer-2")
+    this.append(textDisplay, firstButton, secondButton)
+}
 
 
 

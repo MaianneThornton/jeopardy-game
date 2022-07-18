@@ -1,5 +1,5 @@
 const game = document.getElementById('game')
-const score = document.getElementById('score')
+const scoreDisplay = document.getElementById('score')
 
 const jeopardyCategories = [
     {
@@ -119,6 +119,8 @@ const jeopardyCategories = [
     },
 ]
 
+let score = 0
+
 function addCategory(category) {
     // Adds the title column
     const column = document.createElement('div')
@@ -178,6 +180,8 @@ function flipCard() {
     secondButton.classList.add('second-button')
     firstButton.innerHTML = this.getAttribute("data-answer-1")
     secondButton.innerHTML = this.getAttribute("data-answer-2")
+    firstButton.addEventListener('click', getResult)
+    secondButton.addEventListener('click', getResult)
     this.append(textDisplay, firstButton, secondButton)
 
     // disables the option to click multiple cards at once
@@ -186,7 +190,34 @@ function flipCard() {
 }
 
 function getResult() {
-    
+    const allCards = Array.from(document.querySelectorAll('card'))
+    allCards.forEach(card => addEventListener('click', flipCard))
+
+    const cardOfButton = this.parentElement
+
+    // adds correct response value to score
+    if (cardOfButton.getAttribute('data-correct') == this.innerHTML) {
+        score = score + parseInt(cardOfButton.getAttribute('data-value'))
+        scoreDisplay.innerHTML = score
+        cardOfButton.classList.add('correct-answer')
+        // removes children last to first
+        setTimeout(() => {
+            while (cardOfButton.firstChild) {
+                cardOfButton.removeChild(cardOfButton.lastChild)
+            }
+            cardOfButton.innerHTML = cardOfButton.getAttribute('data-value')
+        }, 100)
+    } else {
+        cardOfButton.classList.add('wrong-answer')
+        setTimeout(() => {
+            while (cardOfButton.firstChild) {
+                cardOfButton.removeChild(cardOfButton.lastChild)
+            }
+            cardOfButton.innerHTML = 0
+        }, 100)
+    }
+    // allows to select the next card
+    cardOfButton.removeEventListener("click", flipCard)
 }
 
 

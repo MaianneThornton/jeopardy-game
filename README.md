@@ -38,7 +38,7 @@ In this project users will be able to:
 
 ## My process💭
 
-This is a complex project that I started by marking out initial structure, classes, and id's in HTML. Next I finalized the UI by styling the CSS. I styled both the front and back of the cards, and the question buttons. I then added functionality by way of JavaScript to switch between create and display the categories, card values, questions, and correct and incorrect answers.
+This is a complex project that I started by marking out the initial structure, classes, and IDs in HTML. Next, I finalized the UI by styling the CSS. I styled both the front and back of the cards and the question buttons. I then added functionality by way of JavaScript to switch between creating and displaying the categories, card values, questions, and correct and incorrect answers.
 
 ### Built with👷🏾‍♀️
 
